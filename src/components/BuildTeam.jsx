@@ -8,7 +8,6 @@ const BuildTeam = () => {
   const [aiTeam, setAiTeam] = useState([]);
   const [teamsReady, setTeamsReady] = useState(false);
   const [numberSelected, setNumberSelected] = useState(5);
-  const [money, setMoney] = useState(500)
 
   const { players, loading } = useContext(PlayersContext);
 
@@ -40,29 +39,30 @@ const BuildTeam = () => {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h2 className="text-xl font-bold mb-4 text-white">
-        Select {numberSelected} Players
+      <h2 className="text-xl font-bold mb-4 text-Black">
+            {numberSelected === 0
+              ? 'Your Team is Ready'
+              : numberSelected < 5
+              ? `Pick ${numberSelected} More Players`
+              : `Pick ${numberSelected} Players`}
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-6">
+     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-6">
         {players.map((player) => {
           const isSelected = userTeam.some((p) => p.ID === player.ID);
           return (
             <div
               key={player.ID}
-              className={` cursor-pointer text-sm transition hover:scale-105  ${
-                isSelected
-                  ? "bg-green-100 border-green-400 grayscale"
-                  : "hover:bg-gray-100"
-              }`}
               onClick={() => togglePlayer(player)}
+              className={`cursor-pointer p-1 rounded border hover:scale-105 transition ease-in ${
+                isSelected ? "grayscale-75  " : "border-transparent "
+              }`}
             >
-           <PlayerCardMini player={player}/>
+              <PlayerCardMini player={player} />
             </div>
           );
         })}
-      </div>
-
+</div>
       <button
         onClick={createAITeam}
         disabled={userTeam.length !== 5}

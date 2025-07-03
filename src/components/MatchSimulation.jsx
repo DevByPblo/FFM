@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 
-
 const MatchSimulation = ({ userStrength, aiStrength }) => {
   const [matchResult, setMatchResult] = useState(null);
   const [timer, setTimer] = useState(null);
   const intervalRef = useRef(null);
-
 
   const simulateMatch = () => {
     const userScoreRaw = userStrength + Math.random() * 20;
@@ -67,5 +65,6 @@ const MatchSimulation = ({ userStrength, aiStrength }) => {
     </div>
   );
 };
-
+ /// done
 export default MatchSimulation;
+
