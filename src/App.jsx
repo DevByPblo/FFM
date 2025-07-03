@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <BuildTeam />
-      {player && <PlayerCardMini player={player} />}
+      
     </div>
   );
 }

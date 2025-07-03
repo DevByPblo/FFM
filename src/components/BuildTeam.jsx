@@ -43,7 +43,7 @@ const BuildTeam = () => {
             {numberSelected === 0
               ? 'Your Team is Ready'
               : numberSelected < 5
-              ? `Pick ${numberSelected} More Players`
+              ? `Pick ${5 - numberSelected} More Players`
               : `Pick ${numberSelected} Players`}
       </h2>
 
